@@ -1,5 +1,4 @@
 import React, { memo, useMemo } from 'react'
-import classNames from 'classnames/bind'
 
 const Preview = ({ id, name, percent, src, classprefix, onRemove }) => {
   const removeFile = () => {
@@ -12,23 +11,23 @@ const Preview = ({ id, name, percent, src, classprefix, onRemove }) => {
 
   return (
     <div
-      className={classNames('boomFileUpload__preview', {
-        [`${classprefix}__preview`]: classprefix
-      })}
+      className={`boomFileUpload__preview${
+        classprefix ? ` ${classprefix}__preview` : ''
+      }`}
     >
       {img}
       <span
-        className={classNames('boomFileUpload-file__name', {
-          [`${classprefix}-file__name`]: classprefix
-        })}
+        className={`boomFileUpload-file__name${
+          classprefix ? ` ${classprefix}-file__name` : ''
+        }`}
       >
         {name}
       </span>
       {percent && <progress value={percent || 0} max='100'></progress>}
       <span
-        className={classNames('boomFileUpload-fileRemove__btn', {
-          [`${classprefix}-fileRemove__btn`]: classprefix
-        })}
+        className={`boomFileUpload-fileRemove__btn${
+          classprefix ? ` ${classprefix}-fileRemove__btn` : ''
+        }`}
         onClick={() => removeFile()}
       ></span>
     </div>
