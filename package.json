@@ -1,6 +1,6 @@
 {
   "name": "boom-file-upload",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "File Upload Handler. Whic will allow you to create file upload system with multiple file uploads by couple clicks and view for uploaded files.,",
   "author": "BoomTech LLC",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": ">=15.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
