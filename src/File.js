@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-import classNames from 'classnames/bind'
 import List from './Components/List'
 import UploadService from './Services/FileUpload'
 
@@ -70,9 +69,9 @@ const FileUpload = ({
 
   return (
     <div
-      className={classNames('boomFileUpload-file__content', {
-        [`${classprefix}-file__content`]: classprefix
-      })}
+      className={`boomFileUpload-file__content${
+        classprefix ? ` ${classprefix}-file__content` : ''
+      }`}
     >
       {value && (
         <List
@@ -84,9 +83,9 @@ const FileUpload = ({
       )}
       {((!value.length && !isMultiple) || isMultiple) && (
         <div
-          className={classNames('boomFileUpload-drop__content', {
-            [`${classprefix}-drop__content`]: classprefix
-          })}
+          className={`boomFileUpload-drop__content${
+            classprefix ? ` ${classprefix}-drop__content` : ''
+          }`}
           onDragOver={(e) => e.preventDefault()}
           onDragEnter={(e) => e.preventDefault()}
           onDragLeave={(e) => e.preventDefault()}
@@ -94,9 +93,9 @@ const FileUpload = ({
           onClick={() => fileInputRef.current.click()}
         >
           <div
-            className={classNames('boomFileUpload-input__content', {
-              [`${classprefix}-drop__message`]: classprefix
-            })}
+            className={`boomFileUpload-input__content${
+              classprefix ? ` ${classprefix}-drop__message` : ''
+            }`}
           >
             {inputContent ||
               `Drag File${isMultiple ? `s` : ``} or Click to Browse`}
