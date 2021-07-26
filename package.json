@@ -1,6 +1,6 @@
 {
   "name": "boom-file-upload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "File Upload Handler. Whic will allow you to create file upload system with multiple file uploads by couple clicks and view for uploaded files.,",
   "author": "BoomTech LLC",
   "license": "MIT",
