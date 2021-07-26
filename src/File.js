@@ -22,6 +22,8 @@ const FileUpload = ({
   const [value, setValue] = useState(initialValue || [])
   const fileInputRef = useRef(null)
 
+  console.log('Value in top component', value)
+
   useEffect(() => {
     if (getFiles) getFiles(value)
   }, [value])
@@ -32,6 +34,8 @@ const FileUpload = ({
   }
 
   const handleUpload = async (files) => {
+    console.log('files in handleUpload function', files)
+
     Object.keys(files).map(
       (item, i) => (files[item].id = `${new Date().getTime()}-${i}`)
     )
