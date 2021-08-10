@@ -1,6 +1,6 @@
 # boom-file-upload
 
-> File Upload Handler. Whic will allow you to create file upload system with multiple file uploads by couple clicks and view for uploaded files.,
+> The File Upload Handler will allow you to create a file upload system with the option of uploading multiple files in a couple of clicks and viewing them,
 
 [![NPM](https://img.shields.io/npm/v/boom-file-upload.svg)](https://www.npmjs.com/package/boom-file-upload) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
