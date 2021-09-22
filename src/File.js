@@ -15,6 +15,7 @@ const FileUpload = ({
   autoUpload,
   getResult,
   headers,
+  dropbox,
   ...props
 }) => {
   const [state, setState] = useState({})
@@ -48,7 +49,7 @@ const FileUpload = ({
   // Move this to another file
   const upload = async (file) => {
     const promise = new Promise((resolve, reject) => {
-      return UploadService.upload(file, url, headers, (event) => {
+      return UploadService.upload({ file, url, headers, dropbox }, (event) => {
         const percent = Math.round((100 * event.loaded) / event.total)
         file.percent = percent
         setState({ ...state, [file.id]: percent })
