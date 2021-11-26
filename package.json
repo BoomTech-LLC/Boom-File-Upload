@@ -51,6 +51,7 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "boomform": "^3.0.0"
   }
 }
