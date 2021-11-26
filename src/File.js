@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import List from './Components/List'
 import UploadService from './Services/FileUpload'
+import { Input } from 'boomform'
 
 const FileUpload = ({
   inputContent,
@@ -20,7 +21,6 @@ const FileUpload = ({
 }) => {
   const [state, setState] = useState({})
   const [value, setValue] = useState(initialValue || [])
-  const fileInputRef = useRef(null)
 
   useEffect(() => {
     if (getFiles) getFiles(value)
@@ -93,7 +93,15 @@ const FileUpload = ({
           onDragEnter={(e) => e.preventDefault()}
           onDragLeave={(e) => e.preventDefault()}
           onDrop={handleFileDrop}
-          onClick={() => fileInputRef.current.click()}
+          onClick={(e) => {
+            if (e.target.nodeName !== 'INPUT') {
+              if (e.target.nextElementSibling && e.target.nextElementSibling.nodeName === 'INPUT') {
+                e.target.nextElementSibling.click()
+              } else if(e.target.lastChild && e.target.lastChild.nodeName === 'INPUT') {
+                e.target.lastChild.click()
+              }
+            }
+          }}
         >
           <div
             className={`boomFileUpload-input__content${
@@ -103,16 +111,15 @@ const FileUpload = ({
             {inputContent ||
               `Drag File${isMultiple ? `s` : ``} or Click to Browse`}
           </div>
-          <input
-            ref={fileInputRef}
-            {...props}
-            multiple={isMultiple}
-            type='file'
-            onChange={(e) => {
-              const files = e.target.files
-              handleUpload(files)
-            }}
-          />
+            <Input
+              {...props}
+              multiple={isMultiple}
+              type='file'
+              onChange={(e) => {
+                const files = e.target.files
+                handleUpload(files)
+              }}
+            />
         </div>
       )}
     </div>
