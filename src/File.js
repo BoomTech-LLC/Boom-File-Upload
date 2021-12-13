@@ -33,7 +33,14 @@ const FileUpload = ({
 
   const handleUpload = async (files) => {
     Object.keys(files).map(
-      (item, i) => (files[item].id = `${new Date().getTime()}-${i}`)
+      (item, i) => {
+        files[item].id = `${new Date().getTime()}-${i}`
+        let newName = files[item].name;
+        let extensions = newName.split('.').pop();
+        let name = newName.split('.').slice(0, -1).join('.'); 
+        newName = `${name}_${Math.random().toString(36).substr(2, 4)}.${extensions}`
+        files[item].name = newName;
+      }
     )
 
     setValue(value ? [...value, ...Array.from(files)] : Array.from(files))
