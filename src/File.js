@@ -32,19 +32,31 @@ const FileUpload = ({
   }
 
   const handleUpload = async (files) => {
-    Object.keys(files).map(
-      (item, i) => {
-        files[item].id = `${new Date().getTime()}-${i}`
-        let newName = files[item].name;
-        let extensions = newName.split('.').pop();
-        let name = newName.split('.').slice(0, -1).join('.'); 
-        newName = `${name}_${Math.random().toString(36).substr(2, 4)}.${extensions}`
-        files[item].name = newName;
-      }
-    )
+    const custommFiles = []
 
-    setValue(value ? [...value, ...Array.from(files)] : Array.from(files))
-    if (autoUpload) for (const file of files) await upload(file)
+    for (let i = 0; i < files.length; i++) {
+      custommFiles.push(
+        new File(
+          [files[i]],
+          `${files[i].name.replace(
+            '.' + files[i].name.split('.').pop(),
+            ''
+          )}_${Math.random().toString(36).substr(2, 4)}.${files[i].name
+            .split('.')
+            .pop()}`,
+          { type: files[i].type }
+        )
+      )
+    }
+
+    Object.keys(custommFiles).map((item, i) => {
+      custommFiles[item].id = `${new Date().getTime()}-${i}`
+    })
+
+    setValue(
+      value ? [...value, ...Array.from(custommFiles)] : Array.from(custommFiles)
+    )
+    if (autoUpload) for (const file of custommFiles) await upload(file)
   }
 
   const handleFileDrop = (e) => {

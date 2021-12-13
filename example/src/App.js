@@ -16,7 +16,7 @@ const App = () => {
   }
   return (
     <FileUpload
-      isMultiple={false}
+      isMultiple={true}
       onRemove={handleRemove}
       getFiles={getFiles}
       getErrors={getErrors}
