@@ -11,7 +11,7 @@ const upload = async (
     ...dropBoxHeaders,
     'Dropbox-API-Arg': JSON.stringify({
       ...dropboxAPIArg,
-      path: `${path}/${name}`
+      path: `${path}/${name.normalize('NFC')}`
     })
   }
   return axios.post(url, file, {

@@ -21,7 +21,7 @@ const Preview = ({ id, name, percent, src, classprefix, onRemove }) => {
           classprefix ? ` ${classprefix}-file__name` : ''
         }`}
       >
-        {name}
+        {name.normalize('NFC')}
       </span>
       {percent && <progress value={percent || 0} max='100'></progress>}
       <span

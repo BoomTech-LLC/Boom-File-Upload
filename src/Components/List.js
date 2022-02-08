@@ -7,7 +7,7 @@ const List = ({ value, onRemove, classprefix }) => {
       <Preview
         key={id}
         id={id}
-        name={name}
+        name={name.normalize('NFC')}
         percent={percent}
         src={type.startsWith('image/') && URL.createObjectURL(file)}
         onRemove={onRemove}

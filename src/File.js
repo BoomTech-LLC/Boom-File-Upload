@@ -38,10 +38,13 @@ const FileUpload = ({
       custommFiles.push(
         new File(
           [files[i]],
-          `${files[i].name.replace(
-            '.' + files[i].name.split('.').pop(),
-            ''
-          )}_${Math.random().toString(36).substr(2, 4)}.${files[i].name
+          `${files[i].name
+            .normalize('NFC')
+            .replace(
+              '.' + files[i].name.normalize('NFC').split('.').pop(),
+              ''
+            )}_${Math.random().toString(36).substr(2, 4)}.${files[i].name
+            .normalize('NFC')
             .split('.')
             .pop()}`,
           { type: files[i].type }
